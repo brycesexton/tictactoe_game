@@ -29,3 +29,5 @@ pseudo-code for game functionality
         // restart button (reset CSS elements)
 
     // initialize the game
+
+    <img width="1266" alt="TIC TAC WIREFRAME" src="https://github.com/brycesexton/tictactoe_game/assets/144744378/3ce90e20-8153-44ea-b6c2-9b7da71ae2c8">
