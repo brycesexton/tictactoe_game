@@ -1,5 +1,8 @@
 # tictactoe_game
 
+<img width="1266" alt="TIC TAC WIREFRAME" src="https://github.com/brycesexton/tictactoe_game/assets/144744378/8f83bfa2-e8fa-447d-8f87-778676cc28d4">
+
+
 pseudo-code for game functionality
 
     // define all necessary variables, array for x/o
@@ -29,5 +32,6 @@ pseudo-code for game functionality
         // restart button (reset CSS elements)
 
     // initialize the game
+
 
 
