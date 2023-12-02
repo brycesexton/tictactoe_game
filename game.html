@@ -8,23 +8,28 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <h1>Tic Tac Toe</h1>
-    <div class="main">
-      <div class="board">
-        <div class="tictac">O</div>
-        <div class="tictac">O</div>
-        <div class="tictac">X</div>
-        <div class="tictac">X</div>
-        <div class="tictac">X</div>
-        <div class="tictac">X</div>
-        <div class="tictac">O</div>
-        <div class="tictac">X</div>
-        <div class="tictac">O</div>
+    <div class="hero-container">
+      <h1>Tic Tac Toe</h1>
+      <div class="actions">
+      <div class="button">
+        <button id="xButt">X</button>
+        <button id="oButt">O</button>
       </div>
-    </div> 
-    <div class="button">
-      <button id="xButt"></button>
-      <button id="oButt"></button>
+        <div id="board" class="tictacboard">
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+          <div class="tictac"></div>
+        </div>
+        <div id="message"></div>
+        <button id="play-again-btn" style="visibility: hidden">Play Again</button>
     </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

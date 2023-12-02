@@ -1,7 +1,6 @@
 # tictactoe_game
 
-
-pseudo-code for game functionality
+// pseudo-code for game functionality
 
     // define all necessary variables, array for x/o
     // event listeners for x/o click, start/restart

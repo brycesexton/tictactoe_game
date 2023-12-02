@@ -1,63 +1,88 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 80px;
-    color: rgb(82, 125, 195);
-    background-color: rgb(90, 86, 86);
-  }
+  box-sizing: border-box;
+}
 
-  h1 {
-    font-size: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .main {
-    border: 20px solid rgb(32, 103, 218);
-    padding: 20px;
-    margin-top: 25px;
-  }
-  
-  .board {
-    display: grid;
-    grid-template-columns: 4fr 4fr 4fr;
-    width: 500px;
-    height: 500px;
-  }
-  
-  .tictac {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    font-weight: bold;
-    border: 2px solid rgb(32, 103, 218);
-  }
-  
-  .tictac:hover {
-    cursor: pointer;
-    font-size: 60px;
-    opacity: 0.9;
-    color: rgb(32, 103, 218);
-    animation: textGlow 1.5s infinite;
-  }
-  
-  @keyframes textGlow {
-    0% {
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+  color: rgb(82, 125, 195);
+  background-color: rgb(90, 86, 86);
+  margin: 0;
+}
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+/* .hero-container {
+
+} */
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.tictacboard {
+  width: 75%;
+  border: 20px solid rgb(32, 103, 218);
+  padding: 20px;
+}
+
+.tictac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: 2px solid rgb(32, 103, 218);
+  font-size: 2em;
+  height: 60px;
+  cursor: pointer;
+  transition: font-size 0.3s, opacity 0.3s, color 0.3s;
+}
+
+.button {
+  /* display: flex;
+  justify-content: space-around; */
+  margin-top: 20px;
+  width: 25%;
+}
+
+button {
+  font-size: 1em;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tictac:hover {
+  font-size: 2.5em;
+  opacity: 0.9;
+  color: rgb(32, 103, 218);
+  animation: textGlow 1.5s infinite;
+}
+
+@keyframes textGlow {
+  0% {
       text-shadow: none;
-    }
-    50% {
+  }
+  50% {
       text-shadow: 0 0 15px black;
-    }
-    100% {
-      text-shadow: none;
-    }
   }
-  
+  100% {
+      text-shadow: none;
+  }
+}
