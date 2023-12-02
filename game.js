@@ -31,7 +31,7 @@ function init() {
             cell.classList.add('tictac');
             cell.dataset.row = i;
             cell.dataset.col = j;
-            cell.addEventListener('click', handleDrop);
+            cell.addEventListener('click', placeMark);
             boardEl.appendChild(cell);
         }
     }
@@ -54,7 +54,7 @@ function handlePlayerChoice(choice) {
         document.getElementById('oButt').removeEventListener('click', () => handlePlayerChoice('O'));
 
         document.querySelectorAll('.tictac').forEach(cell => {
-            cell.addEventListener('click', handleDrop);
+            cell.addEventListener('click', placeMark);
             cell.style.cursor = 'pointer';
         });
     }
@@ -66,7 +66,7 @@ function resetBoard() {
     init();
 }
 
-function handleDrop(evt) {
+function placeMark(evt) {
     const cell = evt.target;
     const rowIdx = cell.dataset.row;
     const colIdx = cell.dataset.col;
