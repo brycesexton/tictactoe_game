@@ -16,15 +16,15 @@ let initialPlayerChoice = null;
 function init() {
     turn = 1;
     board = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
+        ['', '', ''], // col 0
+        ['', '', ''], // col 1
+        ['', '', ''], // col 2
+    // row 0, 1, 2
     ];
     winner = null;
-
     initialPlayerChoice = null;
 
-    boardEl.innerHTML = ''; // Clear the board
+    boardEl.innerHTML = ''; // reset game board
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             const cell = document.createElement('div');
@@ -81,7 +81,7 @@ function placeMark(evt) {
 
 function getWinner(rowIdx, colIdx) {
     function getWinner(rowIdx, colIdx) {
-        // Check for horizontal win
+        // horizontal win
         if (
             board[rowIdx][0] === board[rowIdx][1] &&
             board[rowIdx][1] === board[rowIdx][2]
@@ -89,7 +89,7 @@ function getWinner(rowIdx, colIdx) {
             return board[rowIdx][0];
         }
     
-        // Check for vertical win
+        // vertical win
         if (
             board[0][colIdx] === board[1][colIdx] &&
             board[1][colIdx] === board[2][colIdx]
@@ -97,7 +97,7 @@ function getWinner(rowIdx, colIdx) {
             return board[0][colIdx];
         }
     
-        // Check for diagonal win (top-left to bottom-right)
+        // diagonal win (top-left -> bottom-right)
         if (
             rowIdx === colIdx &&
             board[0][0] === board[1][1] &&
@@ -106,7 +106,7 @@ function getWinner(rowIdx, colIdx) {
             return board[0][0];
         }
     
-        // Check for diagonal win (top-right to bottom-left)
+        // diagonal win (top-right -> bottom-left)
         if (
             rowIdx + colIdx === 2 &&
             board[0][2] === board[1][1] &&
@@ -115,12 +115,12 @@ function getWinner(rowIdx, colIdx) {
             return board[0][2];
         }
     
-        // Check for a tie
+        // tie
         if (board.flat().every(cell => cell !== '')) {
             return 'T';
         }
     
-        // No winner yet
+        // No winner
         return null;
     }
 }
