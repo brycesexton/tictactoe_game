@@ -1,7 +1,7 @@
 const players = {
-    '0': 'white', //background color
-    '1': 'black', // update later
-    '-1': 'black' // update later
+    '0': 'white',
+    '1': 'X', 
+    '-1': 'O' 
 };
 
 let turn;
@@ -19,7 +19,7 @@ function init() {
         ['', '', ''], // col 0
         ['', '', ''], // col 1
         ['', '', ''], // col 2
-    // row 0, 1, 2
+    //row0,  1,   2
     ];
     winner = null;
     initialPlayerChoice = null;
@@ -47,8 +47,8 @@ function init() {
 function handlePlayerChoice(choice) {
     if (initialPlayerChoice === null) {
         initialPlayerChoice = choice;
-        players['1'] = initialPlayerChoice === 'X' ? 'purple' : 'orange';
-        players['-1'] = initialPlayerChoice === 'X' ? 'orange' : 'purple';
+        players['1'] = initialPlayerChoice === 'X' ? 'black' : 'white';
+        players['-1'] = initialPlayerChoice === 'X' ? 'white' : 'black';
 
         document.getElementById('xButt').removeEventListener('click', () => handlePlayerChoice('X'));
         document.getElementById('oButt').removeEventListener('click', () => handlePlayerChoice('O'));
@@ -80,49 +80,41 @@ function placeMark(evt) {
 }
 
 function getWinner(rowIdx, colIdx) {
-    function getWinner(rowIdx, colIdx) {
-        // horizontal win
-        if (
-            board[rowIdx][0] === board[rowIdx][1] &&
-            board[rowIdx][1] === board[rowIdx][2]
-        ) {
-            return board[rowIdx][0];
-        }
-    
-        // vertical win
-        if (
-            board[0][colIdx] === board[1][colIdx] &&
-            board[1][colIdx] === board[2][colIdx]
-        ) {
-            return board[0][colIdx];
-        }
-    
-        // diagonal win (top-left -> bottom-right)
-        if (
-            rowIdx === colIdx &&
-            board[0][0] === board[1][1] &&
-            board[1][1] === board[2][2]
-        ) {
-            return board[0][0];
-        }
-    
-        // diagonal win (top-right -> bottom-left)
-        if (
-            rowIdx + colIdx === 2 &&
-            board[0][2] === board[1][1] &&
-            board[1][1] === board[2][0]
-        ) {
-            return board[0][2];
-        }
-    
-        // tie
-        if (board.flat().every(cell => cell !== '')) {
-            return 'T';
-        }
-    
-        // No winner
-        return null;
+    if (
+        board[rowIdx][0] === board[rowIdx][1] &&
+        board[rowIdx][1] === board[rowIdx][2]
+    ) {
+        return board[rowIdx][0];
     }
+
+    if (
+        board[0][colIdx] === board[1][colIdx] &&
+        board[1][colIdx] === board[2][colIdx]
+    ) {
+        return board[0][colIdx];
+    }
+
+    if (
+        board[0][0] === board[1][1] &&
+        board[1][1] === board[2][2]
+    ) {
+        return board[0][0];
+    }
+    if (
+        board[0][2] === board[1][1] && 
+        board[0][2] === board[2][0]
+
+    ) {
+        return board[0][2];
+    }
+
+    // tie
+    if (board.flat().every(cell => cell !== '')) {
+        return 'T';
+    }
+
+    // No winner
+    return null;
 }
 
 function render() {
@@ -135,19 +127,27 @@ function renderBoard() {
     board.forEach(function (rowArr, rowIdx) {
         rowArr.forEach(function (colVal, colIdx) {
             const cell = document.querySelector(`[data-row="${rowIdx}"][data-col="${colIdx}"]`);
-            cell.style.backgroundColor = players[colVal];
+            
+            // Update the content of the cell to display 'X' or 'O'
+            cell.innerText = colVal === 1 ? 'X' : colVal === -1 ? 'O' : '';
+
+            // Update the text color to match the player color
+            cell.style.color = players[colVal];
         });
     });
 }
 
+
 function renderMessage() {
     const messageEl = document.getElementById('message');
+    messageEl.innerText = '';
+
     if (winner === 'T') {
-        messageEl.innerText = "No winner, try again!";
+        messageEl.innerText = "Try again!";
     } else if (winner) {
-        messageEl.innerHTML = `<span style="color: ${players[winner]}">${players[winner].toUpperCase()}</span> Wins!`;
+        messageEl.innerHTML = `<span style="color: ${players[winner]}">${players[winner].toUpperCase()}</span> WINS!`;
     } else {
-        messageEl.innerHTML = `<span style="color: ${players[turn]}">${players[turn].toUpperCase()}</span>'s turn`;
+        messageEl.innerHTML = `<span style="color: ${players[turn]}">${players[turn].toUpperCase()}</span> TURN.`;
     }
 }
 
@@ -156,3 +156,25 @@ function renderControls() {
 }
 
 init();
+
+
+
+// ____________________
+// minusBtn.addEventListener("click", function() {
+//     count--;
+//     minusBtn.classList.add("button-clicked");
+//     updateDisplay();
+// });
+
+// function increase(plusBtn) {
+//     if (click) {
+//         count++;
+//         plusBtn.style.backgroundColor = 'darkgrey'; 
+//     }
+// }
+
+// function decrease(minusBtn) {
+//     if (click) {
+//         count--;
+//     }
+// }

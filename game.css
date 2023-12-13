@@ -1,38 +1,37 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   display: grid;
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-size: 20px;
-  color: rgb(82, 125, 195);
   background-color: rgb(90, 86, 86);
   margin: 0;
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 60px;
   text-align: center;
+  color: rgb(82, 195, 172);
 }
 
-/* .hero-container {
-
-} */
+.actions {
+  display: grid;
+  gap: 20px;
+  text-align: center;
+}
 
 #board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  width: 300px;
-  margin-top: 20px;
+  width: 350px;
+  height: 350px;
+  margin-top: 10px;
 }
 
 .tictacboard {
   width: 75%;
-  border: 20px solid rgb(32, 103, 218);
+  border: 20px solid rgb(82, 195, 172);
   padding: 20px;
 }
 
@@ -41,48 +40,43 @@ h1 {
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  border: 2px solid rgb(32, 103, 218);
+  border: 2px solid rgb(124, 207, 189);
   font-size: 2em;
-  height: 60px;
+  height: 90px; 
   cursor: pointer;
   transition: font-size 0.3s, opacity 0.3s, color 0.3s;
 }
 
-.button {
-  /* display: flex;
-  justify-content: space-around; */
-  margin-top: 20px;
-  width: 25%;
+#message {
+  font-weight: bold;
+  color: rgb(82, 195, 172);
 }
 
-button {
-  font-size: 1em;
-  padding: 10px;
+#play-again-btn {
+  font-weight: bold;
   cursor: pointer;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  color: rgb(124, 207, 189);
+  font-size: 30px;
+  background-color: rgb(90, 86, 86);
+  animation: textGlow 2s infinite;
+  border-radius: 10%;
 }
 
 .tictac:hover {
   font-size: 2.5em;
   opacity: 0.9;
-  color: rgb(32, 103, 218);
+  color: rgb(124, 207, 189);
   animation: textGlow 1.5s infinite;
 }
 
 @keyframes textGlow {
   0% {
-      text-shadow: none;
+    text-shadow: none;
   }
   50% {
-      text-shadow: 0 0 15px black;
+    text-shadow: 0 0 15px rgb(124, 207, 189);;
   }
   100% {
-      text-shadow: none;
+    text-shadow: none;
   }
 }
