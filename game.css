@@ -10,6 +10,7 @@ body {
 
 h1, #message {
   text-align: center;
+  font-family: 'Play', sans-serif;
 }
 
 h1 {
@@ -27,7 +28,6 @@ h1 {
 #board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
   width: 350px;
   height: 350px;
   margin-top: 10px;
@@ -36,6 +36,7 @@ h1 {
 .tictacboard {
   width: 75%;
   border: 20px solid rgb(82, 195, 172);
+  border-radius: 5px;
   padding: 20px;
 }
 
@@ -43,15 +44,24 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Play', sans-serif;
   font-weight: bold;
   border: 2px solid rgb(124, 207, 189);
-  font-size: 2em;
+  font-size: 3em;
   height: 90px; 
   cursor: pointer;
   transition: font-size 0.3s, opacity 0.3s, color 0.3s;
 }
 
+.tictac:hover {
+  font-size: 2.5em;
+  opacity: 0.9;
+  color: rgb(124, 207, 189);
+  animation: textGlow 1.5s infinite;
+}
+
 #play-again-btn {
+  font-family: 'Play', sans-serif;
   font-weight: bold;
   cursor: pointer;
   color: rgb(82, 195, 172);
@@ -63,11 +73,13 @@ h1 {
   animation: textGlow 2s infinite;
 }
 
-.tictac:hover {
-  font-size: 2.5em;
-  opacity: 0.9;
-  color: rgb(124, 207, 189);
-  animation: textGlow 1.5s infinite;
+#play-again-btn:hover {
+  background-color: rgb(120, 120, 120);
+  border-color: rgb(120, 120, 120);
+}
+
+#play-again-btn:active {
+  transform: translateY(1.5px);
 }
 
 @keyframes textGlow {

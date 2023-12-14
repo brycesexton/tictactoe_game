@@ -1,5 +1,4 @@
 const players = {
-    '0': 'white',
     '1': 'X',
     '-1': 'O'
 };
@@ -19,7 +18,6 @@ function init() {
         ['', '', ''], // col 0
         ['', '', ''], // col 1
         ['', '', ''], // col 2
-    //row0,  1,   2
     ];
     winner = null;
     initialPlayerChoice = null;
@@ -36,11 +34,7 @@ function init() {
         }
     }
 
-    document.getElementById('xButt').addEventListener('click', () => handlePlayerChoice('X'));
-    document.getElementById('oButt').addEventListener('click', () => handlePlayerChoice('O'));
-
     playAgainBtn.style.visibility = 'hidden';
-    // playAgainBtn.style.display = 'none';
 
     render();
 }
@@ -50,9 +44,6 @@ function handlePlayerChoice(choice) {
         initialPlayerChoice = choice;
         players['1'] = initialPlayerChoice === 'X' ? 'black' : 'white';
         players['-1'] = initialPlayerChoice === 'X' ? 'white' : 'black';
-
-        document.getElementById('xButt').removeEventListener('click', () => handlePlayerChoice('X'));
-        document.getElementById('oButt').removeEventListener('click', () => handlePlayerChoice('O'));
 
         document.querySelectorAll('.tictac').forEach(cell => {
             cell.addEventListener('click', placeMark);
@@ -64,11 +55,14 @@ function handlePlayerChoice(choice) {
 playAgainBtn.addEventListener('click', resetBoard);
 
 function resetBoard() {
-    // playAgainBtn.style.display = 'none';
     init();
 }
 
 function placeMark(evt) {
+    if (winner) {
+        return;
+    }
+
     const cell = evt.target;
     const rowIdx = cell.dataset.row;
     const colIdx = cell.dataset.col;
@@ -105,7 +99,6 @@ function getWinner(rowIdx, colIdx) {
     if (
         board[0][2] === board[1][1] && 
         board[0][2] === board[2][0]
-
     ) {
         return board[0][2];
     }
