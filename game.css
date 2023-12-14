@@ -8,13 +8,17 @@ body {
   margin: 0;
 }
 
-h1 {
-  font-size: 60px;
+h1, #message {
   text-align: center;
-  color: rgb(82, 195, 172);
 }
 
-.actions {
+h1 {
+  font-size: 60px;
+  color: rgb(82, 195, 172);
+  animation: textGlow 5s infinite;
+}
+
+.actions, .tictacboard {
   display: grid;
   gap: 20px;
   text-align: center;
@@ -47,19 +51,16 @@ h1 {
   transition: font-size 0.3s, opacity 0.3s, color 0.3s;
 }
 
-#message {
-  font-weight: bold;
-  color: rgb(82, 195, 172);
-}
-
 #play-again-btn {
   font-weight: bold;
   cursor: pointer;
-  color: rgb(124, 207, 189);
-  font-size: 30px;
+  color: rgb(82, 195, 172);
+  font-size: 20px;
+  padding: 10px 20px;
   background-color: rgb(90, 86, 86);
+  border: 5px solid rgb(82, 195, 172);
+  border-radius: 5px;
   animation: textGlow 2s infinite;
-  border-radius: 10%;
 }
 
 .tictac:hover {
@@ -70,13 +71,10 @@ h1 {
 }
 
 @keyframes textGlow {
-  0% {
+  0%, 100% {
     text-shadow: none;
   }
   50% {
-    text-shadow: 0 0 15px rgb(124, 207, 189);;
-  }
-  100% {
-    text-shadow: none;
+    text-shadow: 0 0 15px rgb(124, 207, 189);
   }
 }

@@ -1,7 +1,7 @@
 const players = {
     '0': 'white',
-    '1': 'X', 
-    '-1': 'O' 
+    '1': 'X',
+    '-1': 'O'
 };
 
 let turn;
@@ -24,7 +24,7 @@ function init() {
     winner = null;
     initialPlayerChoice = null;
 
-    boardEl.innerHTML = ''; // reset game board
+    boardEl.innerHTML = '';
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             const cell = document.createElement('div');
@@ -40,6 +40,7 @@ function init() {
     document.getElementById('oButt').addEventListener('click', () => handlePlayerChoice('O'));
 
     playAgainBtn.style.visibility = 'hidden';
+    // playAgainBtn.style.display = 'none';
 
     render();
 }
@@ -63,6 +64,7 @@ function handlePlayerChoice(choice) {
 playAgainBtn.addEventListener('click', resetBoard);
 
 function resetBoard() {
+    // playAgainBtn.style.display = 'none';
     init();
 }
 
@@ -108,12 +110,10 @@ function getWinner(rowIdx, colIdx) {
         return board[0][2];
     }
 
-    // tie
     if (board.flat().every(cell => cell !== '')) {
         return 'T';
     }
 
-    // No winner
     return null;
 }
 
@@ -127,23 +127,21 @@ function renderBoard() {
     board.forEach(function (rowArr, rowIdx) {
         rowArr.forEach(function (colVal, colIdx) {
             const cell = document.querySelector(`[data-row="${rowIdx}"][data-col="${colIdx}"]`);
-            
-            // Update the content of the cell to display 'X' or 'O'
             cell.innerText = colVal === 1 ? 'X' : colVal === -1 ? 'O' : '';
-
-            // Update the text color to match the player color
             cell.style.color = players[colVal];
         });
     });
 }
 
-
 function renderMessage() {
     const messageEl = document.getElementById('message');
     messageEl.innerText = '';
+    messageEl.style.color = 'rgb(82, 195, 172)';
+    messageEl.style.fontSize = '30px';
+    messageEl.style.fontWeight = 'bold';
 
     if (winner === 'T') {
-        messageEl.innerText = "Try again!";
+        messageEl.innerText = "YOU TIED, TRY AGAIN!";
     } else if (winner) {
         messageEl.innerHTML = `<span style="color: ${players[winner]}">${players[winner].toUpperCase()}</span> WINS!`;
     } else {
@@ -156,25 +154,3 @@ function renderControls() {
 }
 
 init();
-
-
-
-// ____________________
-// minusBtn.addEventListener("click", function() {
-//     count--;
-//     minusBtn.classList.add("button-clicked");
-//     updateDisplay();
-// });
-
-// function increase(plusBtn) {
-//     if (click) {
-//         count++;
-//         plusBtn.style.backgroundColor = 'darkgrey'; 
-//     }
-// }
-
-// function decrease(minusBtn) {
-//     if (click) {
-//         count--;
-//     }
-// }
