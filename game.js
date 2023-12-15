@@ -116,7 +116,7 @@ function renderMessage() {
     const messageEl = document.getElementById('message');
     messageEl.innerText = '';
     messageEl.style.color = 'rgb(82, 195, 172)';
-    messageEl.style.fontSize = '30px';
+    messageEl.style.fontSize = '35px';
     messageEl.style.fontWeight = 'bold';
 
     if (winner === 'T') {

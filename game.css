@@ -14,7 +14,7 @@ h1, #message {
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 65px;
   color: rgb(82, 195, 172);
   animation: textGlow 5s infinite;
 }
@@ -29,14 +29,13 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 350px;
-  height: 350px;
+  height: 340px;
   margin-top: 10px;
 }
 
 .tictacboard {
   width: 75%;
   border: 20px ridge rgb(82, 195, 172);
-  /* border-style: ridge; */
   border-radius: 5px;
   padding: 20px;
 }
@@ -66,12 +65,12 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   color: rgb(82, 195, 172);
-  font-size: 20px;
+  font-size: 25px;
   padding: 10px 20px;
   background-color: rgb(90, 86, 86);
   border: 5px solid rgb(82, 195, 172);
   border-radius: 5px;
-  animation: textGlow 2s infinite;
+  animation: textGlow 1s infinite;
 }
 
 #play-again-btn:hover {
@@ -88,6 +87,6 @@ h1 {
     text-shadow: none;
   }
   50% {
-    text-shadow: 0 0 15px rgb(124, 207, 189);
+    text-shadow: 0 0 5px rgb(124, 207, 189);
   }
 }
