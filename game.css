@@ -35,7 +35,8 @@ h1 {
 
 .tictacboard {
   width: 75%;
-  border: 20px solid rgb(82, 195, 172);
+  border: 20px ridge rgb(82, 195, 172);
+  /* border-style: ridge; */
   border-radius: 5px;
   padding: 20px;
 }
@@ -46,7 +47,7 @@ h1 {
   align-items: center;
   font-family: 'Play', sans-serif;
   font-weight: bold;
-  border: 2px solid rgb(124, 207, 189);
+  border: 3px ridge rgb(124, 207, 189);
   font-size: 3em;
   height: 90px; 
   cursor: pointer;

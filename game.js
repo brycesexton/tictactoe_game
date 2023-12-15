@@ -6,6 +6,7 @@ const players = {
 let turn;
 let board;
 let winner;
+let round; // ROUND
 
 const boardEl = document.getElementById('board');
 const playAgainBtn = document.getElementById('play-again-btn');
@@ -34,22 +35,7 @@ function init() {
         }
     }
 
-    playAgainBtn.style.visibility = 'hidden';
-
     render();
-}
-
-function handlePlayerChoice(choice) {
-    if (initialPlayerChoice === null) {
-        initialPlayerChoice = choice;
-        players['1'] = initialPlayerChoice === 'X' ? 'black' : 'white';
-        players['-1'] = initialPlayerChoice === 'X' ? 'white' : 'black';
-
-        document.querySelectorAll('.tictac').forEach(cell => {
-            cell.addEventListener('click', placeMark);
-            cell.style.cursor = 'pointer';
-        });
-    }
 }
 
 playAgainBtn.addEventListener('click', resetBoard);
@@ -147,3 +133,4 @@ function renderControls() {
 }
 
 init();
+
