@@ -6,7 +6,6 @@ const players = {
 let turn;
 let board;
 let winner;
-let round; // ROUND
 
 const boardEl = document.getElementById('board');
 const playAgainBtn = document.getElementById('play-again-btn');
