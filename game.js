@@ -10,17 +10,21 @@ let winner;
 const boardEl = document.getElementById('board');
 const playAgainBtn = document.getElementById('play-again-btn');
 
-let initialPlayerChoice = null;
+let playerChoice = 'X';
 
 function init() {
-    turn = 1;
+    if (players[playerChoice] === 'X') {
+        turn = 1;
+    } else {
+        turn = -1;
+    }
+
     board = [
-        ['', '', ''], // col 0
-        ['', '', ''], // col 1
-        ['', '', ''], // col 2
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', ''],
     ];
     winner = null;
-    initialPlayerChoice = null;
 
     boardEl.innerHTML = '';
     for (let i = 0; i < 3; i++) {
@@ -29,7 +33,7 @@ function init() {
             cell.classList.add('tictac');
             cell.dataset.row = i;
             cell.dataset.col = j;
-            cell.addEventListener('click', placeMark);
+            cell.addEventListener('click', placeXO);
             boardEl.appendChild(cell);
         }
     }
@@ -40,10 +44,11 @@ function init() {
 playAgainBtn.addEventListener('click', resetBoard);
 
 function resetBoard() {
+    playerChoice = playerChoice === '1' ? '-1' : '1';
     init();
 }
 
-function placeMark(evt) {
+function placeXO(evt) {
     if (winner) {
         return;
     }
@@ -61,38 +66,35 @@ function placeMark(evt) {
 }
 
 function getWinner(rowIdx, colIdx) {
-    if (
-        board[rowIdx][0] === board[rowIdx][1] &&
-        board[rowIdx][1] === board[rowIdx][2]
-    ) {
+    if (board[rowIdx][0] === board[rowIdx][1] && 
+        board[rowIdx][1] === board[rowIdx][2]) {
         return board[rowIdx][0];
     }
 
-    if (
-        board[0][colIdx] === board[1][colIdx] &&
-        board[1][colIdx] === board[2][colIdx]
-    ) {
+    if (board[0][colIdx] === board[1][colIdx] && 
+        board[1][colIdx] === board[2][colIdx]) {
         return board[0][colIdx];
     }
 
-    if (
-        board[0][0] === board[1][1] &&
-        board[1][1] === board[2][2]
-    ) {
+    if (board[0][0] === board[1][1] && 
+        board[1][1] === board[2][2]) {
         return board[0][0];
     }
-    if (
-        board[0][2] === board[1][1] && 
-        board[0][2] === board[2][0]
-    ) {
+
+    if (board[0][2] === board[1][1] && 
+        board[0][2] === board[2][0]) {
         return board[0][2];
     }
 
-    if (board.flat().every(cell => cell !== '')) {
-        return 'T';
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] === '') {
+                return null; 
+            }
+        }
     }
 
-    return null;
+    return 'T';
 }
 
 function render() {
@@ -102,13 +104,22 @@ function render() {
 }
 
 function renderBoard() {
-    board.forEach(function (rowArr, rowIdx) {
-        rowArr.forEach(function (colVal, colIdx) {
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
+        for (let colIdx = 0; colIdx < 3; colIdx++) {
             const cell = document.querySelector(`[data-row="${rowIdx}"][data-col="${colIdx}"]`);
-            cell.innerText = colVal === 1 ? 'X' : colVal === -1 ? 'O' : '';
+            const colVal = board[rowIdx][colIdx];
+
+            if (colVal === 1) {
+                cell.innerText = 'X';
+            } else if (colVal === -1) {
+                cell.innerText = 'O';
+            } else {
+                cell.innerText = '';
+            }
+
             cell.style.color = players[colVal];
-        });
-    });
+        }
+    }
 }
 
 function renderMessage() {
@@ -132,4 +143,3 @@ function renderControls() {
 }
 
 init();
-
